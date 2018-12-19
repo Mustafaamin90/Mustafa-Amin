@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           
+            Stack<char> yigin = new Stack<char>();
+            Console.Write("bir ifade giriniz: ");
+            string ifade = Console.ReadLine();
+            for (int i=0; i<ifade.Length; i++)
+            {
+               
+                yigin.Push(ifade[i]);
+
+
+            }
+            bool Thecase = true;
+            for (int i = 0; i < yigin.Count; i++)
+            {
+                if (ifade[i] != yigin.Pop()) {
+
+                    Thecase = false;
+                    break;
+                }
+
+            }
+            if (Thecase)
+            {
+                 Console.WriteLine("girilen ifade palindromdýr");
+            }
+            else
+            {
+
+                Console.WriteLine("girilen ifade palindrom deðildir");
+            }
+
+
+            Console.Read();
+
+
+
+        }
+    }
+}
