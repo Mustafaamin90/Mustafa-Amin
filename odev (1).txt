@@ -33,16 +33,16 @@ namespace ConsoleApp3
             }
             if (Thecase)
             {
-                 Console.WriteLine("girilen ifade palindromdýr");
+                 Console.WriteLine("girilen ifade palindromdÃ½r");
             }
             else
             {
 
-                Console.WriteLine("girilen ifade palindrom deðildir");
+                Console.WriteLine("girilen ifade palindrom deÃ°ildir");
             }
 
 
-            Console.Read();
+            Console.ReadLine();
 
 
 
