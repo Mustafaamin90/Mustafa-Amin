@@ -1,0 +1,143 @@
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+namespace ConsoleApplication3
+{
+    class Program
+    {
+      static void linearP(int[] dizi)
+        {
+            Hashtable Myhas = new Hashtable();
+            int Value, key,Mycase=0;
+            for (int i = 0; i < dizi.Length; i++)
+            {
+                Value=dizi[i];
+                key = Value % dizi.Length; 
+                if (Myhas[key] == null)
+                {
+                    Myhas.Add(key, Value);
+                    Mycase = -1;
+                }
+
+                else   
+                {
+                    if (key == dizi.Length - 1) key = 0; 
+                    else
+                    {
+                        key++;
+                    }
+
+                }
+                while (Mycase != -1 )
+                {
+                    if (Myhas[key] == null)
+                    {
+                        Myhas.Add(key,Value);
+                        Mycase = -1;
+                    }
+                    else
+                    {
+                        if (key == dizi.Length - 1) key = 0;
+                        else
+                        key = key + 1; ;
+                    }
+                }
+                Mycase = 0;
+            }
+            Console.Write("Has table elemanleri");
+
+            foreach (int keys in Myhas.Keys)
+            {
+                Console.WriteLine("key numarasi:{0}  deðer:{1}",keys,Myhas[keys]);
+            } 
+               
+
+        }
+
+       static void QuadratikProbing(int [] dizi)
+        {
+
+            Hashtable MyHashta = new Hashtable();
+            int Value, key, Mycase = 0,t=1;
+            for (int i = 0; i < dizi.Length; i++)
+            {
+                Value = dizi[i];
+                key = Value % dizi.Length;
+                if (MyHashta[key] == null)
+                {
+                    MyHashta.Add(key, Value);
+                    Mycase = -1;
+                }
+
+                else 
+                {
+                    if (key == dizi.Length - 1) key = 0; 
+                    else
+                    {
+                        key = key + t * t;
+                    }
+
+                }
+                while (Mycase != -1)
+                {
+                    if (MyHashta[key] == null)
+                    {
+                        MyHashta.Add(key, Value);
+                        Mycase = -1;
+                        t = 1;
+                    }
+                    else
+                    {
+                        if (key == dizi.Length - 1) key = 0;
+                        else
+                        {
+                            t++;
+                            key = key + t * t;
+                        }
+                    }
+                    
+                }
+                Mycase = 0;
+            }
+            Console.Write("\nHas table elemanlari Quadratic Probing");
+
+            foreach (int keys in MyHashta.Keys)
+            {
+                Console.WriteLine("key numarasý:{0}  deðer:{1}", keys, MyHashta[keys]);
+            } 
+
+        }
+
+
+        static void Main(string[] args)
+        {
+
+           int[] dizi = new int[100];
+            Random uretici = new Random();
+            for(int i=0; i<dizi.Length; i++)
+            {
+
+                dizi[i] = uretici.Next(0,500);
+
+            }
+
+            linearP(dizi);
+            QuadratikProbing(dizi);
+
+      
+            Console.Read();
+
+
+
+
+            
+        }
+
+    
+    }
+}
