@@ -1,0 +1,126 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication4
+{
+    class Program
+    {
+        
+        //insertion
+        public static void insertionsort(int[] dizi)
+        {
+            double z1, z2, z3;
+            z1 = DateTime.Now.Millisecond;
+            for (int i = 0; i < dizi.Length-1; i++)
+            {
+                for (int j = i + 1; j>0; j--)
+                {
+                    if (dizi[j] < dizi[j - 1])
+                    {
+                        int deger = dizi[j - 1];
+                        dizi[j - 1] = dizi[j];
+                        dizi[j] = deger;
+                    }
+                    
+                    
+                }
+                
+
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Ýnsertion sort Dizinin Siralanmis Hali:\n---------------------------------------");
+            for (int i = 0; i < dizi.Length; i++)
+                    {
+                       
+                        Console.WriteLine("Dizinin {0}.eleman\t{1}", i + 1, dizi[i]);
+                        
+                    }
+            z2 = DateTime.Now.Millisecond;
+            z3 = z2 - z1;
+            Console.WriteLine("Gecen Zaman: " + z3);
+        }
+        //selection
+        public static void selectionsort(int[] dizi)
+        {
+            double z1, z2, z3;
+            z1 = DateTime.Now.Millisecond;
+            for (int i = 0; i < dizi.Length - 1; i++)
+            {
+                for (int j = i + 1; j < dizi.Length; j++)
+                {
+                    if (dizi[j] < dizi[i])
+                    {
+                        int deger = dizi[i];
+                        dizi[i] = dizi[j];
+                        dizi[j] = deger;
+                    }
+
+
+                }
+
+            }
+
+            Console.WriteLine("Selection Sort Dizinin Siralanmis Hali:\n---------------------------------------");
+            for (int i = 0; i < dizi.Length; i++)
+            {
+
+                Console.WriteLine("Dizinin {0}.eleman\t{1}", i + 1, dizi[i]);
+            }
+            z2 = DateTime.Now.Millisecond;
+            z3 = z2 - z1;
+            Console.WriteLine("Gecen Zaman: " + z3);
+        }
+
+        //Bubble
+        public static void bubblesort(int[] dizi)
+        {
+            double z1, z2, z3;
+            z1 = DateTime.Now.Millisecond;
+            for (int i = 0; i < dizi.Length; i++)
+            {
+                for (int j =0; j < dizi.Length-1; j++)
+                {
+                    if (dizi[j] > dizi[j+1])
+                    {
+                        int deger = dizi[j+1];
+                        dizi[j+1] = dizi[j];
+                        dizi[j] = deger;
+                    }
+
+
+                }
+
+            }
+
+            Console.WriteLine("Bubble Sort Dizinin Siralanmis Hali:\n------------------------------------");
+            for (int i = 0; i < dizi.Length; i++)
+            {
+
+                Console.WriteLine("Dizinin {0}.eleman\t{1}", i + 1, dizi[i]);
+            }
+            z2 = DateTime.Now.Millisecond;
+            z3 = z2 - z1;
+            Console.WriteLine("Gecen Zaman: " + z3);
+        }
+        static void Main(string[] args)
+        {
+            int[] dizi = new int[100];
+            Random uretici = new Random();
+            Console.WriteLine("Dizinin Ýlk Hali:\n----------------- ");
+            for (int i = 0; i < dizi.Length; i++)
+            {
+                dizi[i] = uretici.Next(1, 100);
+                Console.WriteLine("Dizinin {0}.Elemani\t{1}" , i + 1 , dizi[i]);
+            }
+
+            insertionsort(dizi);
+            selectionsort(dizi);
+            bubblesort(dizi);
+
+            Console.ReadLine();
+            
+        }
+    }
+}
